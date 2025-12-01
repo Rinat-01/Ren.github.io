@@ -414,24 +414,6 @@
         display: flex;
       }
 
-      .nav-links {
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background: rgba(30, 30, 47, 0.95);
-        flex-direction: column;
-        width: 200px;
-        text-align: center;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        padding: 20px 0;
-        border-radius: 0 0 10px 10px;
-      }
-
-      .nav-links.show {
-        transform: translateX(0);
-      }
-
       nav a {
         margin: 8px 0;
       }
@@ -499,6 +481,7 @@
     html {
       scroll-padding-top: 70px;
     }
+    
   </style>
 </head>
 
@@ -515,30 +498,26 @@
         <span></span>
       </div>
       <div class="nav-links" id="nav-links">
-        <a href="#about">Hakkımda</a>
-        <a href="#skills">Yeteneklerim</a>
-        <a href="#projects">Projelerim</a>
-        <a href="#hobbies">Hobiler & Spor</a>
-        <a href="#contact">İletişim</a>
+        <a href="#about">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#hobbies">Hobbies & Sports</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
   </nav>
 
 
   <header id="about" data-aos="fade-up" data-aos-duration="1000">
-    <img src="profil.jpg" alt="Rinat Shaberdiyev - Yönetim Bilişim Sistemleri Öğrencisi">
+    <img src="profil.jpg" alt="Rinat Shaberdiyev - Management Information Systems">
     <h1>Rinat Shaberdiyev</h1>
-    <p>Yazılım Geliştirici | AI Enthusiast | Öğrenci</p>
-    <p><strong>Üniversite:</strong> İstanbul Medipol Üniversitesi | <strong>Bölüm:</strong> Yönetim Bilişim Sistemleri
+    <p>Interested in Cybersecurity and Data Analysis | Developer</p>
+    <p><strong>University:</strong> İstanbul Medipol University <br/><strong>Department:</strong> Management Information Systems
     </p>
-    <div style="margin-top: 20px;">
-      <a href="#contact" class="btn">İletişime Geç</a>
-      <a href="#projects" class="btn btn-ghost">Projelerimi Gör</a>
-    </div>
   </header>
 
   <section id="skills" data-aos="fade-up" data-aos-delay="100">
-    <h2>Yeteneklerim & Sertifikalarım</h2>
+    <h2>Skills & Certifications</h2>
     <div class="grid">
       <div class="card" data-aos="zoom-in" data-aos-delay="100">
         <img class="icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
@@ -546,38 +525,23 @@
         <h3>Python</h3>
       </div>
       <div class="card" data-aos="zoom-in" data-aos-delay="150">
-        <img class="icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
-        <h3>SQL</h3>
+        <img class="icon" src="sql-server-logo.png" alt="SQL">
+        <h3>Microsoft SQL server</h3>
       </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="1100">
+  <img class="icon" src="sql-server-logo.png" alt="T-SQL">
+  <h3>T-SQL</h3>
+  <p>Microsoft SQL Server</p>
+</div>
+
       <div class="card" data-aos="zoom-in" data-aos-delay="200">
         <img class="icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
         <h3>C#</h3>
-      </div>
-      <div class="card" data-aos="zoom-in" data-aos-delay="250">
-        <img class="icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
-        <h3>Java</h3>
       </div>
       <div class="card" data-aos="zoom-in" data-aos-delay="300">
         <img class="icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
           alt="Pandas">
         <h3>Pandas</h3>
-      </div>
-      <!-- Django -->
-      <div class="card" data-aos="zoom-in" data-aos-delay="350">
-        <img class="icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django">
-        <h3>Django</h3>
-      </div>
-      <!-- Node.js -->
-      <div class="card" data-aos="zoom-in" data-aos-delay="400">
-        <img class="icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-          alt="Node.js">
-        <h3>Node.js</h3>
-      </div>
-      <!-- Mobil Geliştirme -->
-      <div class="card" data-aos="zoom-in" data-aos-delay="450">
-        <img class="icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
-          alt="Mobil Geliştirme">
-        <h3>Mobil Geliştirme</h3>
       </div>
       <div class="card" data-aos="zoom-in" data-aos-delay="500">
         <img class="icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
@@ -592,7 +556,7 @@
         <img class="icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
           alt="English">
         <h3>English</h3>
-        <p>B2 Seviyesi</p>
+        <p>B2 Level</p>
       </div>
       <div class="card" data-aos="zoom-in" data-aos-delay="650">
         <div class="icon"
@@ -600,12 +564,12 @@
           RU
         </div>
         <h3>Русский (Russian)</h3>
-        <p>B2 Seviyesi</p>
+        <p>B2 Level</p>
       </div>
 
       <div class="card" data-aos="zoom-in" data-aos-delay="700">
         <img class="icon" src="vakko-logo-png-transparent.png" alt="VAKKO CRM Stajı">
-        <h3>VAKKO CRM Stajı</h3>
+        <h3>VAKKO CRM Internship</h3>
         <p>CRM Departmanı, 2024</p>
       </div>
       <div class="card" data-aos="zoom-in" data-aos-delay="600">
@@ -617,47 +581,56 @@
 
 
       <!-- Sertifikalar -->
+       <div class="card" data-aos="zoom-in" data-aos-delay="1100">
+  <img class="icon" src="btk akademy.png.jpg" alt="BTK Akademi Siber Güvenlik">
+  <h3>Cybersecurity Certificate</h3>
+  <p>BTK akademy, 2025</p>
+</div>
+<div class="card" data-aos="zoom-in" data-aos-delay="1150">
+  <img class="icon" src="Linkedin-Learning-Web.png" alt="LinkedIn Learning Veri Madenciliği">
+  <h3>Data Mining Certificate</h3>
+  <p>LinkedIn Learning, 2025</p>
+</div>
+ <div class="card" data-aos="zoom-in" data-aos-delay="1100">
+  <img class="icon" src="btk akademy.png.jpg" alt="BTK Akademi Siber Güvenlik">
+  <h3>Microsoft SQL server Certificate</h3>
+  <p>BTK Akademy, 2025</p>
+</div>
+<div class="card" data-aos="zoom-in" data-aos-delay="1150">
+  <img class="icon" src="Linkedin-Learning-Web.png" alt="LinkedIn Learning Veri Madenciliği">
+  <h3>Data Analysis with Python and Pandas Certificate</h3>
+  <p>LinkedIn Learning, 2025</p>
+</div>
+
       <div class="card" data-aos="zoom-in" data-aos-delay="750">
         <img class="icon" src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Python Certificate">
-        <h3>Python ile Programlama Kampı</h3>
+        <h3>Python Programming Bootcamp</h3>
         <p>Udemy, 2025</p>
       </div>
       <div class="card" data-aos="zoom-in" data-aos-delay="800">
         <img class="icon" src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="C# Certificate">
-        <h3>C# Programlama Dili</h3>
+        <h3>C# Programming Language Certificate</h3>
         <p>Udemy, 2023</p>
-      </div>
-      <div class="card" data-aos="zoom-in" data-aos-delay="850">
-        <div class="icon"
-          style="font-weight:bold; font-size:2rem; color:#1E90FF; display:flex; justify-content:center; align-items:center;">
-          NG</div>
-        <h3>C# Programlama Dili</h3>
-        <p>ngAkademi, 2025</p>
       </div>
       <div class="card" data-aos="zoom-in" data-aos-delay="900">
         <div class="icon"
           style="font-weight:bold; font-size:2rem; color:#1E90FF; display:flex; justify-content:center; align-items:center;">
           NG</div>
         <h3>C#.NET Core</h3>
-        <p>ngAkademi, 2025</p>
+        <p>ngAkademy, 2023</p>
       </div>
 
       <div class="card" data-aos="zoom-in" data-aos-delay="950">
         <div class="icon"
           style="font-weight:bold; font-size:2rem; color:#1E90FF; display:flex; justify-content:center; align-items:center;">
           NG</div>
-        <h3>OOP</h3>
+        <h3>C# OOP Certificate</h3>
         <p>ngAkademi, 2025</p>
-      </div>
-      <div class="card" data-aos="zoom-in" data-aos-delay="1000">
-        <img class="icon" src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Pandas Certificate">
-        <h3>Pandas ile Veri Analizi</h3>
-        <p>Udemy, 2024</p>
       </div>
       <!-- Udemy SQL Sertifikası -->
       <div class="card" data-aos="zoom-in" data-aos-delay="1050">
         <img class="icon" src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="SQL Certificate">
-        <h3>SQL</h3>
+        <h3>SQL server Certificate</h3>
         <p>Udemy, 2024</p>
       </div>
     </div>
@@ -665,7 +638,7 @@
 
 
   <section id="projects" data-aos="fade-up">
-    <h2>Projelerim</h2>
+    <h2>Projects</h2>
     <div class="grid">
       <div class="card" data-aos="flip-left" data-aos-delay="100">
         <img class="icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
@@ -695,7 +668,7 @@
   </section>
 
   <section id="hobbies" data-aos="fade-up">
-    <h2>Hobilerim & Spor</h2>
+    <h2>Hobbies & Sports</h2>
     <div class="grid">
 
       <!-- FontAwesome CDN head içine ekle -->
@@ -708,7 +681,6 @@
       <div class="card" data-aos="zoom-in" data-aos-delay="150">
         <i class="fas fa-book icon"></i>
         <h3>Kitap Okumak</h3>
-        <p>2020</p>
       </div>
 
       <div class="card" data-aos="zoom-in" data-aos-delay="200">
@@ -752,12 +724,20 @@
         <i class="fas fa-volleyball-ball icon"></i>
         <h3>Voleybol</h3>
       </div>
-
-    </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="600">
+  <i class="fas fa-brain icon"></i>
+  <h3>Stoacılık</h3>
+  <p>Kişisel Gelişim</p>
+</div>
+<div class="card" data-aos="fade-up" data-aos-delay="700" style="grid-column: 1 / -1; background: rgba(255,255,255,0.1); font-style: italic; color: #FFD700;">
+  <p style="margin: 15px; font-size: 1rem; text-align:center;">
+    "You have power over your mind – not outside events. Realize this, and you will find strength." <br> 
+    – Marcus Aurelius
+  </p>
+</div>
   </section>
-
   <section id="contact" data-aos="fade-up">
-    <h2>İletişim</h2>
+    <h2>Contact </h2>
     <p style="margin-top: 30px; text-align: center;">
      <a href="mailto:shaberdiyevrinat@gmail.com">shaberdiyevrinat@gmail.com</a>
     </p>
@@ -767,11 +747,6 @@
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn"
           style="width:20px; vertical-align:middle; margin-right:5px;">LinkedIn
       </a>
-
-      <a href="https://wa.me/" target="_blank" class="btn">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
-          style="width:20px; vertical-align:middle; margin-right:5px;">WhatsApp
-      </a>
       
       <a href="https://github.com/Rinat2001" target="_blank" class="btn">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"
@@ -779,10 +754,11 @@
       </a>
     </div>
     
+    
   </section>
 
   <footer>
-    <p>© 2025 Rinat Shaberdiyev. Tüm hakları saklıdır.</p>
+    <p>© 2025 Rinat Shaberdiyev. Tüm hakları saklıdır</p>
   </footer>
   <div class="back-to-top" id="backToTop">
     <i class="fas fa-arrow-up"></i>
@@ -797,13 +773,6 @@
       duration: 800,
       once: true
     });
-    const skillProgressBars = document.querySelectorAll('.skill-progress');
-      skillProgressBars.forEach(bar => {
-        const width = bar.getAttribute('data-width');
-        setTimeout(() => {
-          bar.style.width = width;
-        }, 500);
-      });
       const projectSliders = document.querySelectorAll('.project-slider');
       projectSliders.forEach(slider => {
         const slides = slider.querySelectorAll('.project-slide');
@@ -844,9 +813,6 @@
         document.getElementById('nav-links').classList.remove('show');
       });
     });
-
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("nav-links");
 
     hamburger.addEventListener("click", () => {
       hamburger.classList.toggle("active");
