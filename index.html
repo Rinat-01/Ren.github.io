@@ -44,6 +44,153 @@
   </svg>">
   
   <style>
+#intro-loader {
+  position: fixed;
+  inset: 0;
+  background:radial-gradient(circle at center,#2a2a40,#1E1E2F);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+/* Soft shimmer effect */
+.brand-name {
+  font-size: 2rem;
+  font-weight: 600;
+  display: inline-block;
+  
+  /* Shimmer */
+  background: linear-gradient(110deg, #ffffff 30%, #FFD700 50%, #ffffff 70%);
+  background-size: 500% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Giriş ve shimmer animasyonlarını birlikte çalıştır */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: brandIn 1s ease forwards, shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@-webkit-keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes brandIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.loader-wrap {
+  overflow: hidden;
+}
+.brand-name::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: #fff;
+  margin: 8px auto 0;
+  animation: lineGrow 0.8s ease forwards 0.4s;
+}
+#intro-loader.exit .brand-name {
+  animation-play-state: paused;
+}
+
+/* PAGE TRANSITION LAYER */
+#page-transition {
+  position: fixed;
+  inset: 0;
+  background:radial-gradient(circle at center, #1e1e2f, #0f0f1a);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+#page-transition.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+
+@keyframes lineGrow {
+  to { width: 60%; }
+}
+
+
+/* Yumuşak giriş */
+@keyframes brandIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ÇIKIŞ */
+#intro-loader.exit {
+  animation: loaderFade 0.9s ease forwards;
+}
+
+@keyframes loaderFade {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* SITE REVEAL */
+#site-content {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(6px);
+  transition: all 0.8s ease;
+}
+
+#site-content.show {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+nav.scrolled a {
+  transform: scale(0.95);
+  opacity: 0.9;
+}
+
+
+/* Scroll sonrası premium durum */
+nav.scrolled {
+  padding: 8px 20px;
+  background: rgba(20, 20, 35, 0.85);
+  backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+}
+nav .logo {
+  transition: transform 0.35s ease, letter-spacing 0.35s ease;
+}
+
+nav.scrolled .logo {
+  transform: scale(0.95);
+  letter-spacing: 0.5px;
+}
+
+
+
+
+
+
+
     /* Genel stiller ve gradient background */
     #particlesCanvas {
       position: fixed;
@@ -127,6 +274,9 @@
     }
 
     nav {
+      transition:padding 0.35s ease, background 0.35s ease, backdrop-filter 0.35s ease,
+      box-shadow 0.35s ease;
+
       position: fixed;
       top: 0;
       width: 100%;
@@ -138,7 +288,6 @@
       z-index: 1001;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
     }
     nav.scrolled {
       padding: 10px 20px;
@@ -186,11 +335,11 @@
     }
 
     nav a {
+      transition: transform 0.3s ease, opacity 0.3s ease;
       margin: 0 20px;
       text-decoration: none;
       font-weight: 600;
       position: relative;
-      transition: 0.3s;
     }
 
     nav a::after {
@@ -325,19 +474,6 @@
       width: 50px;
       height: 50px;
       object-fit: contain;
-    }
-
-    .desc {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      color: #fff;
-      padding: 10px;
-      opacity: 0;
-      transition: 0.4s;
-      font-size: 0.95rem;
     }
 
     footer {
@@ -488,10 +624,18 @@
 </head>
 
 <body>
-
   <canvas id="particlesCanvas"></canvas>
+  <div id="intro-loader">
+  <div id="page-transition"></div>
 
-  <nav id="navbar">
+  <div class="loader-wrap">
+    <span class="brand-name">Rinat Shaberdiyev</span>
+  </div>
+</div>
+<div id="site-content">
+
+  <!-- bütün header, sections, footer burada olmalı -->
+     <nav id="navbar">
     <div class="nav-container">
       <div class="logo" style="color: #FFD700;">Rinat Shaberdiyev</div>
       <div class="hamburger" id="hamburger">
@@ -508,16 +652,13 @@
       </div>
     </div>
   </nav>
-
-
-  <header id="about" data-aos="fade-up" data-aos-duration="1000">
+   <header id="about" data-aos="fade-up" data-aos-duration="1000">
     <img src="profil.jpg" alt="Rinat Shaberdiyev - Management Information Systems">
     <h1>Rinat Shaberdiyev</h1>
-    <p>Interested in Cybersecurity and Data Analysis | Developer</p>
-    <p><strong>University:</strong> İstanbul Medipol University <br/><strong>Department:</strong> Management Information Systems
+    <p>Interested in Cybersecurity and Developer</p>
+    <p><strong>University:</strong> Istanbul Medipol University <br/><strong>Department:</strong> Management Information Systems
     </p>
   </header>
-
   <section id="skills" data-aos="fade-up" data-aos-delay="100">
     <h2>Skills & Certifications</h2>
     <div class="grid">
@@ -614,8 +755,6 @@
   <h4>Siber Güvenliğin Temelleri</h4>
   <p>Turkcell Geleceği Yazanlar</p>
 </div>
-
-
       <div class="card" data-aos="zoom-in" data-aos-delay="750">
         <img class="icon" src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Python Certificate">
         <h4>Python Programming Bootcamp</h4>
@@ -648,8 +787,6 @@
     </div>
     
   </section>
-
-
   <section id="projects" data-aos="fade-up">
     <h2>Projects</h2>
     <div class="grid">
@@ -679,8 +816,7 @@
       </div>
     </div>
   </section>
-
-  <section id="hobbies" data-aos="fade-up">
+   <section id="hobbies" data-aos="fade-up">
     <h2>Hobbies & Sports</h2>
     <div class="grid">
 
@@ -769,16 +905,17 @@
     
     
   </section>
-
   <footer>
-    <p>© 2025 Rinat Shaberdiyev. Tüm hakları saklıdır</p>
+    <p>© 2026 Rinat Shaberdiyev. Tüm hakları saklıdır</p>
   </footer>
-  <div class="back-to-top" id="backToTop">
+</div>
+
+</div>
+<div class="back-to-top" id="backToTop">
     <i class="fas fa-arrow-up"></i>
   </div>
   <!-- AOS Script -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  
   <script>
     // AOS initialization
     document.addEventListener('DOMContentLoaded', function(){
@@ -786,18 +923,7 @@
       duration: 800,
       once: true
     });
-      const projectSliders = document.querySelectorAll('.project-slider');
-      projectSliders.forEach(slider => {
-        const slides = slider.querySelectorAll('.project-slide');
-        if (slides.length > 1) {
-          let currentSlide = 0;
-          setInterval(() => {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-          }, 3000);
-        }
-      });
+      
     });
     window.addEventListener('scroll', function() {
       const nav = document.getElementById('navbar');
@@ -819,19 +945,7 @@
     document.getElementById('hamburger').addEventListener('click', function() {
       this.classList.toggle('active');
       document.getElementById('nav-links').classList.toggle('show');
-    });
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById('hamburger').classList.remove('active');
-        document.getElementById('nav-links').classList.remove('show');
-      });
-    });
-
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      navLinks.classList.toggle("show");
-    });
-    
+    });  
 
     // Close mobile menu when clicking on a link
     document.querySelectorAll('.nav-links a').forEach(link => {
@@ -841,13 +955,6 @@
       });
     });
     
-    // Check for saved theme preference
-    if (localStorage.getItem('theme') === 'light') {
-      document.body.classList.add('light-theme');
-      themeIcon.classList.remove('fa-moon');
-      themeIcon.classList.add('fa-sun');
-    }
-
     // Particles ve Gradient
     const canvas = document.getElementById('particlesCanvas');
     const ctx = canvas.getContext('2d');
@@ -856,7 +963,6 @@
       canvas.height = window.innerHeight;
     }
     let particlesArray = [];
-    let mouse = { x: null, y: null, radius: 150 };
     let hue = 0;
 
     canvas.width = window.innerWidth;
@@ -864,20 +970,6 @@
 
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
-    const particles = [];
-    const particleCount = 100;
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2 + 1,
-        speedX: (Math.random() - 0.5) * 0.5,
-        speedY: (Math.random() - 0.5) * 0.5,
-        color: document.body.classList.contains('light-theme') 
-          ? `rgba(30, 30, 47, ${Math.random() * 0.2 + 0.1})` 
-          : `rgba(255, 215, 0, ${Math.random() * 0.2 + 0.1})`
-      });
-    }
     document.getElementById('backToTop').addEventListener('click', () => {
       window.scrollTo({
         top: 0,
@@ -961,6 +1053,23 @@
 
     initParticles();
     animate();
+
+window.addEventListener("load", () => {
+  const loader = document.getElementById("intro-loader");
+  const site = document.getElementById("site-content");
+
+  setTimeout(() => {
+    loader.classList.add("exit");
+    site.classList.add("show");
+
+    setTimeout(() => {
+      loader.remove();
+    }, 900);
+
+  }, 2500); // Apple / Netflix sweet spot
+});
+
+
   </script>
 
 </body>
